@@ -4,3 +4,20 @@
   tasks:
   - name: i want to execute linux command directly
     command: hostname -f
+    register: myresult
+
+  - name: i want to debug
+    debug:
+      msg: "{{myresult}}"  
+
+  - name: install git
+    apt:
+      name: git
+      state: present
+    when: myresult.stderr==""
+
+  - name: install tree
+    apt:
+      name: tree
+      state: present
+    when: myresult.stdrr !=""          

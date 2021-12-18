@@ -7,7 +7,7 @@
     apt:
       name: apache2
       state: present
-  - name:copy index file into nodes
+  - name: copy index file into nodes
     template:
         src:
         dest: /var/www/html/index.html    
